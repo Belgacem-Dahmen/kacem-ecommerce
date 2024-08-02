@@ -1,9 +1,13 @@
 <script setup>
 import Navbar from "@/components/Navbar.vue";
-import axios from "axios";
+import { useAuthStore } from "@/stores/auth";
+import { onMounted } from "vue";
 
-
-
+const auth = useAuthStore();
+onMounted(async () => {
+  const data = await auth.getUser
+  console.log(data.data)
+})
 
 </script>
 
