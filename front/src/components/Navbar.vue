@@ -1,12 +1,6 @@
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <nav>
@@ -14,12 +8,17 @@
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/login">login</RouterLink>
         <RouterLink to="/register">Register</RouterLink>
+        <button @click="auth.handleLogout">logout</button>
       </nav>
     </div>
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+import { useAuthStore } from '@/stores/auth';
+
+const auth = useAuthStore()
+</script>
 
 <style>
 header {

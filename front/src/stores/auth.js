@@ -2,6 +2,7 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 
 import axios from "axios";
+import router from "@/router";
 
 
 
@@ -29,8 +30,28 @@ export const useAuthStore = defineStore("auth", () => {
       email: data.email,
       password: data.password
     })
+    router.push('/')
 
   }
 
-  return { user, getUser, handleLogin }
+  async function handleRegister(data) {
+    await getToken();
+    await axios.post('register', {
+      email: data.email,
+      password: data.password
+
+    })
+    router.push('login')
+  }
+
+  async function handleLogout() {
+    await getToken
+
+    await axios.post('logout')
+    console.log('logged out');
+    router.push('login')
+  }
+
+
+  return { user, getUser, handleLogin, handleLogout, handleRegister }
 });
